@@ -5,7 +5,7 @@ import json as j
 class Connection:
 
     @staticmethod
-    def connectionMongoDb():
+    def connection():
         # ----------------- Connection MongoDB ------------------------#
         mongoClient = pm.MongoClient(
             "mongodb+srv://mongodb:<password>@cluster0.biiuuzo.mongodb.net/?retryWrites=true&w=majority")
@@ -23,9 +23,8 @@ class Connection:
 
             # Monitoramento de mudanças no MongoDB
         with coluna.watch(full_document="updateLookup") as change_stream:
-            print("Entrou aqui")
+            print("Redis running....")
             for change in change_stream:
-                print("Entrou no for")
                 print(change_stream)
                 operation_type = change["operationType"]
                 print(
